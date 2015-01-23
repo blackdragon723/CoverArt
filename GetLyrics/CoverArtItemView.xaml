@@ -1,0 +1,46 @@
+﻿<UserControl
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:cal="http://www.caliburnproject.org" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        mc:Ignorable="d" 
+        x:Class="GetLyrics.CoverArtItemView"
+        AllowDrop="True"
+        cal:Message.Attach="[Event DragEnter] = [Action FilesDraggedOnWindow($eventArgs)]; [Event Drop] = [Action FilesDroppedOnWindow($eventArgs)]">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="71*"/>
+            <RowDefinition Height="7*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle Grid.ColumnSpan="2" Fill="#FFFFFF" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.RowSpan="2"/>
+        <Border BorderThickness="1"
+        BorderBrush="#FF000000"
+                Grid.Column="0"
+                Grid.Row="0"
+                Margin="10,16"
+                Height="281" >
+            <Image Name="CurrentCoverArt"
+                   Source="{Binding CurrentImage}"
+           Stretch="Fill"
+           VerticalAlignment="Top"/>
+        </Border>
+        <Border BorderThickness="1"
+        BorderBrush="#FF000000"
+                Grid.Column="1"
+                Margin="10,16"
+                Height="281">
+            <Image Name="NewCoverArt" Source="{Binding NewImage}"
+           Stretch="Fill"
+           VerticalAlignment="Top"/>
+        </Border>
+        <Button Content="Save" Grid.Column="1" HorizontalAlignment="Left" x:Name = "SaveCoverArt" Margin="217,1,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Cancel" Grid.Column="1" HorizontalAlignment="Left" x:Name="Close" Margin="137,1,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
+        
+    </Grid>
+</UserControl>
